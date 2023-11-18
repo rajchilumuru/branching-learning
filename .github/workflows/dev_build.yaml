@@ -9,6 +9,26 @@ jobs:
   build:
     runs-on: self-hosted
 
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v2
+
+#     - name: Set up JDK
+#       uses: actions/setup-java@v2
+#       with:
+#         distribution: 'adopt'
+#         java-version: '14'
+
+#     - name: Build with Gradle
+#       run: |
+#         gradlew.bat build  # Use gradlew.bat instead of ./gradlew
+
+#     - name: Run Java Program
+#       run: java -cp build/classes/java/main MainProgram
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -19,10 +39,10 @@ jobs:
         distribution: 'adopt'
         java-version: '14'
 
-    - name: Build with Gradle
+    - name: Build with Maven
       run: |
-        gradlew.bat build  # Use gradlew.bat instead of ./gradlew
+        mvn clean install  # Replace with your Maven build command
 
     - name: Run Java Program
-      run: java -cp build/classes/java/main MainProgram
+      run: java -cp target/classes MainProgram  # Adjust the classpath and main class accordingly
 
