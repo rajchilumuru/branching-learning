@@ -1,9 +1,12 @@
-name: DEV
+name: PROD
 
 on:
-  push:
-    branches:
-      - development 
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to build'
+        required: true
+        default: 'main'
 
 jobs:
   build:
@@ -25,4 +28,3 @@ jobs:
 
     - name: Run Java Program
       run: java -cp build/classes/java/main MainProgram
-

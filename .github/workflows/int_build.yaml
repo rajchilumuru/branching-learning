@@ -1,9 +1,9 @@
-name: DEV
+name: INT
 
 on:
   push:
     branches:
-      - development 
+      - main
 
 jobs:
   build:
