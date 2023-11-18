@@ -3,7 +3,7 @@ name: Java Build
 on:
   pull_request:
     branches:
-      - developmenta
+      - development
 
 jobs:
   build:
