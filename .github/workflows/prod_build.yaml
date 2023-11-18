@@ -1,0 +1,30 @@
+name: Production Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to build'
+        required: true
+        default: 'main'
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '14'
+
+    - name: Build with Gradle
+      run: |
+        ./gradlew build
+
+    - name: Run Java Program
+      run: java -cp build/classes/java/main MainProgram
