@@ -1,4 +1,4 @@
-name: Production Build
+name: PROD
 
 on:
   workflow_dispatch:
