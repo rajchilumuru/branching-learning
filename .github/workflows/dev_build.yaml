@@ -1,10 +1,9 @@
 name: Java Build
 
 on:
-  pull_request:
+  push:
     branches:
-      - "*"
-if: github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'development'
+      - development 
 
 jobs:
   build:
