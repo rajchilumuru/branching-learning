@@ -21,7 +21,7 @@ jobs:
 
     - name: Build with Gradle
       run: |
-        ./gradlew build
+        gradlew.bat build  # Use gradlew.bat instead of ./gradlew
 
     - name: Run Java Program
       run: java -cp build/classes/java/main MainProgram
