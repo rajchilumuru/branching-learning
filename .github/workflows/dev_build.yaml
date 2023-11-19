@@ -20,4 +20,29 @@ jobs:
 
     - name: Push Docker Image
       run: docker push teerdha/gitactions:latest
+
+  name: Deploy to Local Docker
+
+on:
+  workflow_run:
+    workflows: ["Build and Push Docker Image"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Pull Docker Image from Docker Hub
+      run: docker pull teerdha/gitactions:latest
+
+    - name: Run Docker Container Locally
+      run: docker run -p 3000:3000 -d teerdha/gitactions:latest
+
+
+
       
