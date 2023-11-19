@@ -7,16 +7,17 @@ on:
 jobs:
   build:
     runs-on: self-hosted
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "14"
-      - name: Install dependencies
-        run: npm install
-      - name: Build
-        run: npm run build
-      - name: Test
-        run: npm test
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build Docker Image
+      run: docker build -t teerdha/gitactions:latest .
+
+    - name: Log in to Docker Hub
+      run: docker login -u teerdha -p ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Push Docker Image
+      run: docker push teerdha/gitactions:latest
+      
