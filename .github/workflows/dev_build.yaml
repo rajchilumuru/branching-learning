@@ -1,28 +1,22 @@
+---
 name: DEV
-
 on:
   push:
     branches:
-      - simple 
-
+      - simple
 jobs:
   build:
     runs-on: self-hosted
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-
-    - name: Install dependencies
-      run: npm install
-
-   - name: Build
-      run: npm run build  # Replace with your actual build script or command
-
-    - name: Test
-      run: npm test  # Replace with your actual test script or command
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Test
+        run: npm test
