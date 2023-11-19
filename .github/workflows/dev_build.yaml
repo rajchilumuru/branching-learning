@@ -3,11 +3,11 @@ name: DEV
 on:
   push:
     branches:
-      - development 
+      - simple 
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     - name: Checkout code
