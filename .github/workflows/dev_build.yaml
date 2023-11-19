@@ -21,12 +21,8 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Build
-      run: npm run build  # Replace with your build script or command
-    - name: Build with Maven
-      run: |
-        mvn clean install  # Replace with your Maven build command
+   - name: Build
+      run: npm run build  # Replace with your actual build script or command
 
-    - name: Run Java Program
-      run: java -cp target/classes MainProgram  # Adjust the classpath and main class accordingly
-
+    - name: Test
+      run: npm test  # Replace with your actual test script or command
