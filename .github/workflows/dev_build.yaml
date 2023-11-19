@@ -1,9 +1,10 @@
----
 name: DEV
+
 on:
   push:
     branches:
       - simple
+
 jobs:
   build:
     runs-on: self-hosted
@@ -16,16 +17,10 @@ jobs:
         run: docker login -u teerdha -p ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Push Docker Image
         run: docker push teerdha/gitactions:latest
-  name: Deploy to Local Docker
-  on: null
-  workflow_run:
-    workflows:
-      - Build and Push Docker Image
-    types:
-      - completed
-  jobs: null
+
   deploy:
     runs-on: self-hosted
+    needs: build
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
